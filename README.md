@@ -19,6 +19,10 @@ https://github.com/shun-rec/django-website-05
 
 Paiza Cloudで以下３つを選択して新規サーバーを作成して下さい 。
 
+* django
+* MySQL
+* Postgres
+
 ## Sqlite3と接続しよう
 
 ### 接続設定
