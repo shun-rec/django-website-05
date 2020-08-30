@@ -201,9 +201,11 @@ Sqlite3の場合と同様のため省略します。
 ```
 django
 gunicorn
-psycopg2-binary
-dj_database_url
 whitenoise
+dj-database-url
+python-dotenv
+psycopg2-binary
+mysqlclient
 ```
 
 ### Procfile
