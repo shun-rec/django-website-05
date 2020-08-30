@@ -187,7 +187,22 @@ Sqlite3の場合と同様のため省略します。
 
 ## Herokuの本番サーバーで接続できるか確認しよう
 
-追加の手順はありません。前回と同様にHerokuサーバーにアップロードするだけです。
+特別な手順はありません。
+前回と同様にrequirements.txtとProcfileを作成してHerokuサーバーにアップロードするだけです。
+
+### requirements.txt
+
+```
+django
+gunicorn
+psycopg2-binary
+```
+
+### Procfile
+
+```
+web: gunicorn pj_db.wsgi
+```
 
 〜詳細説明〜
 
