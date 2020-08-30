@@ -188,7 +188,13 @@ Sqlite3の場合と同様のため省略します。
 ## Herokuの本番サーバーで接続できるか確認しよう
 
 特別な手順はありません。
-前回と同様にrequirements.txtとProcfileを作成してHerokuサーバーにアップロードするだけです。
+前回と同様に、
+
+1. 静的ファイルの設定
+2. requirements.txtを作成
+3. Procfileを作成
+
+してHerokuサーバーにアップロードするだけです。
 
 ### requirements.txt
 
@@ -196,12 +202,36 @@ Sqlite3の場合と同様のため省略します。
 django
 gunicorn
 psycopg2-binary
+dj_database_url
+whitenoise
 ```
 
 ### Procfile
 
 ```
 web: gunicorn pj_db.wsgi
+```
+
+### 静的ファイルの設定
+
+#### whitenoiseの設定
+
+全体設定ファイルの編集
+
+MIDDLEWAREの最後にwhitenoiseを追加
+
+```
+MIDDLEWARE = [
+    ...
+    'whitenoise.middleware.WhiteNoiseMiddleware',
+]
+```
+
+最後に以下を追記
+
+```
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 ```
 
 〜詳細説明〜
